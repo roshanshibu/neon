@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Auth from './Auth/Auth'
+import MainRoutes from './MainRoutes';
+
+export const JwtContext = React.createContext()
 
 function App() {
+  const [Jwt, setJwt] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <JwtContext.Provider value={{Jwt, setJwt}}>
+        <div className="App">
+          <Routes>
+            <Route path='/auth' element={<Auth />} />
+            <Route path='*' element={<MainRoutes />} /> 
+          </Routes>
+        </div>
+      </JwtContext.Provider>
+    </>
   );
 }
 

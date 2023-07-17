@@ -1,0 +1,38 @@
+:root {
+    --grey-color: #2E2E2E;
+  }
+.imagePost{
+    color: white;
+    background-color: var(--grey-color);
+    /* background-color: red; */
+    font-family: sans-serif;
+}
+.topBar{
+    background: var(--grey-color);
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 0;
+}
+.topBarStats{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.postImage{
+    width: 100%;
+    height: 400px;
+    object-fit:contain;
+}
+.bottomBar{
+    background: var(--grey-color);
+    display: flex;
+    flex-direction: row;
+    line-height: 0;
+    justify-content: space-between;
+}
+.actionBar{
+    display: flex;
+    padding: 10px 0px;
+}
