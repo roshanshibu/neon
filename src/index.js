@@ -15,5 +15,4 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.unregister();
-reportWebVitals();
+serviceWorkerRegistration.register();
