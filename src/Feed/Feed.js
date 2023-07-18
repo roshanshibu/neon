@@ -1,18 +1,15 @@
 import { LemmyHttp, GetPosts } from 'lemmy-js-client';
 import { useContext, useState } from 'react';
-import { JwtContext } from '../App';
 import ImagePost from '../ImagePost/ImagePost';
 
 const Feed = (props) => {
-    const jwtContext = useContext(JwtContext)
-
     const [posts, setPosts] = useState([]);
 
     const fetchPosts = async () => {
         let baseUrl = 'https://lemm.ee';
         let client = new LemmyHttp(baseUrl, LemmyHttp.headers);
         let params = {
-            auth: jwtContext.Jwt,
+            auth: localStorage.getItem('neon_token'),
         };
         client.getPosts(params).then(
             (resp) => { 

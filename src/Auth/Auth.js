@@ -1,9 +1,7 @@
 import { LemmyHttp, Login } from 'lemmy-js-client';
 import { useContext, useState } from 'react';
-import { JwtContext } from '../App';
 
 const Auth = (props) => {
-    const jwtContext = useContext(JwtContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     
@@ -22,7 +20,7 @@ const Auth = (props) => {
             password: password,
         };
         client.login(loginForm).then(
-            (resp) => { jwtContext.setJwt(resp.jwt) },
+            (resp) => { localStorage.setItem("neon_token", resp.jwt) },
             (error) => { console.log(error) }
         );
     }
@@ -41,7 +39,6 @@ const Auth = (props) => {
                     value={password}>
             </input>
             <button onClick={doLogin}>Login</button>
-            <p>[{jwtContext.Jwt}]</p>
         </div>
     )
 }
